@@ -21,15 +21,14 @@ products.get("/", zValidator('query', getProductSchema), async (c) => {
         cursorCondition = {
             OR: [
                 {
-                    createdAt: { gt: new Date(decode.createdAt) },
-
+                    createdAt: { lt: new Date(decode.createdAt) },
                 },
                 {
                     createdAt: {
                         equals: new Date(decode.createdAt)
                     },
                     id: {
-                        gt: decode.id
+                        lt: decode.id
                     }
                 }
             ]
