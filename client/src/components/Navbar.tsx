@@ -15,7 +15,6 @@ export default function Navbar() {
             <NavLink href="/pricing">Pricing</NavLink>
             <NavLink href="/about">About</NavLink>
             <NavLink href="#">Docs</NavLink>
-            <NavLink href="#">Log in</NavLink>
           </div>
           <div className="flex items-center">
             <Link href="/" className="flex shrink-0 items-center gap-2">
@@ -26,14 +25,6 @@ export default function Navbar() {
             </Link>
           </div>
           <div className="flex items-center gap-4 lg:gap-6">
-            <div className="hidden items-center gap-3 md:flex">
-              <Link href="#" className="inline-flex shrink-0 items-center gap-2 rounded-full px-4 py-2 text-sm font-medium text-olive-950 transition-colors hover:bg-olive-100">
-                Log in
-              </Link>
-              <Link href="#" className="inline-flex shrink-0 items-center gap-2 rounded-full bg-olive-950 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-olive-800">
-                Sign up
-              </Link>
-            </div>
             <button
               onClick={() => setOpen(!open)}
               aria-label="Toggle menu"
@@ -60,7 +51,6 @@ export default function Navbar() {
                 <MobileNavLink href="/pricing">Pricing</MobileNavLink>
                 <MobileNavLink href="/about">About</MobileNavLink>
                 <MobileNavLink href="#">Docs</MobileNavLink>
-                <MobileNavLink href="#">Log in</MobileNavLink>
               </div>
             </div>
           </div>
