@@ -1,0 +1,23 @@
+import type { Metadata } from "next";
+import "./globals.css";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import ClientScript from "@/components/ClientScript";
+
+export const metadata: Metadata = {
+  title: "Oatmeal — Customer support that feels like a conversation",
+  description: "Simplify your shared inbox, collaborate effortlessly, and give every customer a reply that feels personal.",
+};
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en" className="h-full antialiased">
+      <body className="min-h-full flex flex-col bg-white text-olive-950 font-sans">
+        <Navbar />
+        <main className="grow">{children}</main>
+        <Footer />
+        <ClientScript />
+      </body>
+    </html>
+  );
+}
