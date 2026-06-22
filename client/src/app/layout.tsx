@@ -5,8 +5,8 @@ import Footer from "@/components/Footer";
 import ClientScript from "@/components/ClientScript";
 
 export const metadata: Metadata = {
-  title: "Oatmeal — Customer support that feels like a conversation",
-  description: "Simplify your shared inbox, collaborate effortlessly, and give every customer a reply that feels personal.",
+  title: "CodeVector — Discover products you'll love",
+  description: "Browse thousands of products across dozens of categories. Find exactly what you need with our curated catalog.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

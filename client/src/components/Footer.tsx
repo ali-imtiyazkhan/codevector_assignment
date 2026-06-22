@@ -8,7 +8,7 @@ export default function Footer() {
           <form className="lg:col-span-2" action="#">
             <p className="text-lg font-semibold">Stay in the loop</p>
             <p className="mt-2 text-sm text-olive-300">
-              Get customer support tips, product updates and customer stories that you can archive as soon as they arrive.
+              Get product catalog updates, new arrivals, and curated recommendations delivered to your inbox.
             </p>
             <div className="mt-4 flex gap-2 rounded-xl bg-white p-1.5">
               <input type="email" placeholder="Email" aria-label="Email" className="min-w-0 flex-1 border-0 bg-transparent px-3 py-2 text-sm text-olive-950 outline-none placeholder:text-olive-400" />
@@ -23,9 +23,9 @@ export default function Footer() {
           <div>
             <h3 className="text-sm font-semibold">Product</h3>
             <ul className="mt-4 space-y-3 text-sm text-olive-300">
-              <li><Link href="#" className="hover:text-white transition-colors">Features</Link></li>
+              <li><Link href="#" className="hover:text-white transition-colors">Catalog</Link></li>
               <li><Link href="/pricing" className="hover:text-white transition-colors">Pricing</Link></li>
-              <li><Link href="#" className="hover:text-white transition-colors">Integrations</Link></li>
+              <li><Link href="#" className="hover:text-white transition-colors">Categories</Link></li>
             </ul>
           </div>
           <div>
@@ -56,7 +56,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="mt-16 flex flex-col items-start gap-4 border-t border-olive-800 pt-8 sm:flex-row sm:items-center sm:justify-between">
-          <div className="text-xs text-olive-400">&copy; 2025 Oatmeal, Inc.</div>
+          <div className="text-xs text-olive-400">&copy; 2025 CodeVector, Inc.</div>
           <div className="flex items-center gap-4">
             <a href="https://x.com" target="_blank" rel="noopener noreferrer" aria-label="X" className="text-olive-400 hover:text-white transition-colors">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" className="size-5">
