@@ -7,17 +7,22 @@ export default function HomePage() {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [activeCategory, setActiveCategory] = useState("");
+  const [currentCursor, setCurrentCursor] = useState<string | null>(null);
   const [nextCursor, setNextCursor] = useState<string | null>(null);
+  const [cursorStack, setCursorStack] = useState<string[]>([]);
 
   useEffect(() => {
-    loadProducts();
+    setCursorStack([]);
+    setCurrentCursor(null);
+    fetchPage(null);
   }, [activeCategory]);
 
-  async function loadProducts() {
+  async function fetchPage(cursor: string | null) {
     setLoading(true);
     try {
-      const res = await fetchProducts({ limit: 12, category: activeCategory || undefined });
+      const res = await fetchProducts({ limit: 12, cursor: cursor || undefined, category: activeCategory || undefined });
       setProducts(res.data);
+      setCurrentCursor(cursor);
       setNextCursor(res.nextCursor);
     } catch {
       setProducts([]);
@@ -26,13 +31,17 @@ export default function HomePage() {
     }
   }
 
-  async function loadMore() {
+  async function goNext() {
     if (!nextCursor) return;
-    try {
-      const res = await fetchProducts({ limit: 12, cursor: nextCursor, category: activeCategory || undefined });
-      setProducts((prev) => [...prev, ...res.data]);
-      setNextCursor(res.nextCursor);
-    } catch {}
+    setCursorStack((prev) => [...prev, nextCursor]);
+    fetchPage(nextCursor);
+  }
+
+  async function goPrev() {
+    if (cursorStack.length === 0) return;
+    const newStack = cursorStack.slice(0, -1);
+    setCursorStack(newStack);
+    fetchPage(newStack.length > 0 ? newStack[newStack.length - 1] : null);
   }
 
   return (
@@ -110,16 +119,25 @@ export default function HomePage() {
               </div>
             ))}
           </div>
-          {nextCursor && (
-            <div className="mt-10 text-center">
-              <button
-                onClick={loadMore}
-                className="rounded-full border border-olive-200 px-6 py-3 text-sm font-semibold text-olive-950 transition-colors hover:bg-olive-100"
-              >
-                Load more
-              </button>
-            </div>
-          )}
+          <div className="mt-10 flex items-center justify-center gap-4">
+            <button
+              onClick={goPrev}
+              disabled={cursorStack.length === 0}
+              className="rounded-full border border-olive-200 px-6 py-3 text-sm font-semibold text-olive-950 transition-colors hover:bg-olive-100 disabled:opacity-30 disabled:pointer-events-none"
+            >
+              ← Previous
+            </button>
+            <span className="text-sm text-olive-400">
+              Page {cursorStack.length + 1}
+            </span>
+            <button
+              onClick={goNext}
+              disabled={!nextCursor}
+              className="rounded-full border border-olive-200 px-6 py-3 text-sm font-semibold text-olive-950 transition-colors hover:bg-olive-100 disabled:opacity-30 disabled:pointer-events-none"
+            >
+              Next →
+            </button>
+          </div>
         </>
       )}
     </div>
