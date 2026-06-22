@@ -18,8 +18,11 @@ export default function Navbar() {
             <NavLink href="#">Log in</NavLink>
           </div>
           <div className="flex items-center">
-            <Link href="/" className="flex shrink-0">
-              <img src="/assets/img/logos-oatmeal-instrument-color-olive-950-6531a6.svg" alt="Oatmeal" className="h-7 w-auto" width={85} height={28} />
+            <Link href="/" className="flex shrink-0 items-center gap-2">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" className="size-6 text-olive-950">
+                <path d="M12 2L2 7v10l10 5 10-5V7L12 2zm0 2.18l7 3.5v6.64l-7 3.5-7-3.5V7.68l7-3.5z" />
+              </svg>
+              <span className="text-lg font-semibold text-olive-950">CodeVector</span>
             </Link>
           </div>
           <div className="flex items-center gap-4 lg:gap-6">
@@ -28,7 +31,7 @@ export default function Navbar() {
                 Log in
               </Link>
               <Link href="#" className="inline-flex shrink-0 items-center gap-2 rounded-full bg-olive-950 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-olive-800">
-                Get started
+                Sign up
               </Link>
             </div>
             <button
