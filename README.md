@@ -8,6 +8,14 @@ A cursor-based pagination API with a Next.js frontend — browse 200,000 product
 
 ![Landing Page](client/public/image.png)
 
+## Why this approach
+
+**Cursor-based pagination** instead of offset — with 200K rows, `OFFSET/LIMIT` gets slower on every page (Postgres still scans all skipped rows). Cursor pagination uses `WHERE (createdAt, id) < (cursor)` which hits the composite index directly — each page is O(1), regardless of depth.
+
+**Handling concurrent writes** — new products added mid-browse don't shift the result window because each cursor points to a specific row. The composite index `(createdAt DESC, id DESC)` ensures a total order; UUIDs break ties when timestamps match. No row is duplicated or missed.
+
+**Batch seeding** — inserting 200K rows one-by-one takes minutes. Batching 5,000 at a time via `createMany()` completes in ~10 seconds.
+
 ## Tech Stack
 
 | Layer | Technology |
