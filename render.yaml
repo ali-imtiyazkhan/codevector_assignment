@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: codevector-backend
+    env: docker
+    repo: https://github.com/YOUR_USERNAME/YOUR_REPO
+    branch: main
+    dockerfilePath: ./backend/Dockerfile
+    dockerContext: ./backend
+    envVars:
+      - key: PORT
+        value: 3000
+      - key: DATABASE_URL
+        sync: false
+      - key: NODE_VERSION
+        value: 22
